@@ -1,5 +1,6 @@
 #include "line.hpp"
 #include "math_mucl.hpp"
+#include <iostream>
 
 namespace mucl
 {
@@ -29,15 +30,12 @@ namespace mucl
 
 	bool line::isIntersects(line l)
 	{
-		return (this->A/this->B)!=(l.A/l.B);
+		return false;
 	}
 
 	vec2 line::intersects(line l)
 	{
-		if(!this->isIntersects(l)) return vec2();
-		float x=(this->B*l.C-l.B*this->C)/(this->A*l.B-l.A*this->B);
-		float y=(this->A*l.C-l.A*this->C)/(l.A*this->B-this->A*l.B);
-		return vec2(x,y);
+		return vec2();
 	}
 
 	vec2 line::normalFrom(vec2 point)

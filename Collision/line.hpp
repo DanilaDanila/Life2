@@ -31,7 +31,7 @@ namespace mucl
 
 		vec2 intersects(line);
 
-		vec2 normalFrom(vec2);
+		vec2 normalFrom(vec2); // DO
 
 		~line();
 	};
