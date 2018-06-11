@@ -1,7 +1,7 @@
 #include <iostream>
 #include <OpenGl/OpenGL.h>
 #include <GLUT/GLUT.h>
-#include "line.hpp"
+#include "mucl.hpp"
 
 using namespace mucl;
 
