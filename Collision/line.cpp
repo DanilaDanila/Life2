@@ -63,4 +63,4 @@ namespace mucl
 	}
 
 	line::~line() {}
-};
+}

@@ -32,4 +32,4 @@ namespace mucl
 
 		~vec2();
 	};
-};
+}

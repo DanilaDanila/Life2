@@ -1,4 +1,5 @@
 #include "body.hpp"
+#include "math_mucl.hpp"
 
 namespace mucl
 {
@@ -12,10 +13,16 @@ namespace mucl
 		vertexes[3] = vec2(0.0, 10.0);
 	}
 
+	int body::getVertexCount() {return vertex_count;}
+
 	// DO
 	vec2 body::getVertexPos(int i)
 	{
-		return position+vertexes[i];
+		vec2 pos;
+		pos.x=origin.x+(pos.x-origin.x)*cos(rotation)-(pos.y-origin.y)*sin(rotation);
+		pos.y=origin.y+(pos.y-origin.y)*cos(rotation)+(pos.x-origin.x)*sin(rotation);
+
+		return position-origin+pos;
 	}
 
 	line *body::cut()
@@ -30,4 +37,4 @@ namespace mucl
 	}
 
 	body::~body() {}
-};
+}
