@@ -20,6 +20,8 @@ namespace mucl
 	public:
 		body();
 
+		int getVertexCount();
+
 		vec2 getVertexPos(int);
 
 		line *cut();

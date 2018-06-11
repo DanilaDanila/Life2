@@ -5,9 +5,34 @@
 
 using namespace mucl;
 
+body b;
+
+void draw_line(line *l)
+{
+	vec2 p0 = l->getFirstPoint();
+	vec2 p1 = l->getSecondPoint();
+
+	glColor3f(1.0,1.0,1.0);
+	glBegin(GL_LINES);
+	glVertex2f(p0.x,p0.y);
+	glVertex2f(p1.x,p1.y);
+	glEnd();
+}
+
+void draw_body(body *b)
+{
+	int lines_count = b->getVertexCount();
+	line *lines = b->cut();
+
+	for(int i=0; i<lines_count; i++)
+		draw_line(&lines[i]);
+}
+
 void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	draw_body(&b);
 
 	glFlush();
 }

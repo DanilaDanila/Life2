@@ -12,6 +12,8 @@ namespace mucl
 		vertexes[3] = vec2(0.0, 10.0);
 	}
 
+	int body::getVertexCount() {return vertex_count;}
+
 	// DO
 	vec2 body::getVertexPos(int i)
 	{

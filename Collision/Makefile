@@ -5,7 +5,7 @@ EXEC_FLAG = -o
 CPP_VER = -Wc++11
 
 all: test.o math_mucl.o vec.o line.o body.o body_def.o
-	$(COMPILER) $(CPP_VER) test.o math_mucl.o vec.o line.o body.o body_def.o $(EXEC_FLAG) test
+	$(COMPILER) $(CPP_VER) test.o math_mucl.o vec.o line.o body.o body_def.o $(FRAMEWORKS) $(EXEC_FLAG) test
 test.o: test.cpp
 	$(COMPILER) $(O_FLAG) test.cpp
 math_mucl.o: math_mucl.hpp math_mucl.cpp
