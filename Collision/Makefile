@@ -1,7 +1,8 @@
 COMPILER = g++
+FRAMEWORKS = -framework OpenGL -framework GLUT
 
 all: test.o math_mucl.o vec.o line.o
-	$(COMPILER) test.o math_mucl.o vec.o line.o -o test
+	$(COMPILER) test.o math_mucl.o vec.o line.o $(FRAMEWORKS) -o test
 test.o: test.cpp
 	$(COMPILER) -c test.cpp
 math_mucl.o: math_mucl.hpp math_mucl.cpp
