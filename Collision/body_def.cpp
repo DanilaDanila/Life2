@@ -3,7 +3,7 @@
 
 namespace mucl
 {
-	body_def::body_def() {}
+	body_def::body_def() {clear();}
 
 	void body_def::setVertexCount(int count)
 	{
@@ -18,9 +18,14 @@ namespace mucl
 
 	void body_def::setRotation(float angle) {rotation=angle;}
 
+	void body_def::setPosition(vec2 p) {position=p;}
+
 	void body_def::clear()
 	{
 		vertex_count=0;
+		vertexes=new vec2[0];
+		rotation=0;
+		position=vec2();
 	}
 
 	body body_def::getBody()
@@ -37,6 +42,7 @@ namespace mucl
 			origin+=vertexes[i];
 		origin=origin/vertex_count;
 		b.origin=origin;
+		b.position=position;
 
 		return b;
 	}

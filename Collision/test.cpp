@@ -5,7 +5,7 @@
 
 using namespace mucl;
 
-body b;
+body b0;
 
 void draw_line(line *l)
 {
@@ -32,7 +32,7 @@ void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	draw_body(&b);
+	draw_body(&b0);
 
 	glFlush();
 }
@@ -51,9 +51,23 @@ void init(int argc, char **argv)
 	glutIdleFunc(display);
 }
 
+void setup()
+{
+	body_def def;
+	def.setVertexCount(4);
+	def.setVertex(0, vec2(0.0, 0.0));
+	def.setVertex(1, vec2(60.0, 0.0));
+	def.setVertex(2, vec2(60.0, 30.0));
+	def.setVertex(3, vec2(0.0, 30.0));
+	def.setPosition(vec2(100,200));
+	def.setRotation(pi/4.0);
+	b0 = def.getBody();
+}
+
 int main(int argc, char **argv)
 {
 	init(argc,argv);
+	setup();
 
 	glutMainLoop();
 	return 0;

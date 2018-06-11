@@ -11,6 +11,7 @@ namespace mucl
 		int vertex_count;
 		vec2 *vertexes;
 		float rotation;
+		vec2 position;
 
 	public:
 		body_def();
@@ -20,6 +21,8 @@ namespace mucl
 		void setVertex(unsigned int, vec2);
 
 		void setRotation(float);
+
+		void setPosition(vec2);
 
 		void clear();
 

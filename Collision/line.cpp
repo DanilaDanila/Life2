@@ -59,7 +59,23 @@ namespace mucl
 
 	vec2 line::normalFrom(vec2 point)
 	{
+		// A(y-y1)-B(x-x1)=0 <=> -Bx+Ay+(Bx1-Ay1)=0
+		float A1,B1,C1;
+		A1=-B;
+		B1=A;
+		C1=B*point.x-A*point.y;
+
+		float D=det2f(A,B,A1,B1);
+		float Dx=det2f(-C,B,-C1,B1);
+		float Dy=det2f(A,-C,A1,-C1);
+
+		if(D!=0) return vec2(Dx/D-point.x,Dy/D-point.y);
 		return vec2();
+	}
+
+	bool line::isPointsOnSameSide(vec2 p0, vec2 p1)
+	{
+		return normalFrom(p0)*normalFrom(p1)>0;
 	}
 
 	line::~line() {}

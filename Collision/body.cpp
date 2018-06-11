@@ -15,14 +15,14 @@ namespace mucl
 
 	int body::getVertexCount() {return vertex_count;}
 
-	// DO
 	vec2 body::getVertexPos(int i)
 	{
-		vec2 pos;
-		pos.x=origin.x+(pos.x-origin.x)*cos(rotation)-(pos.y-origin.y)*sin(rotation);
-		pos.y=origin.y+(pos.y-origin.y)*cos(rotation)+(pos.x-origin.x)*sin(rotation);
+		vec2 pos=vertexes[i];
+		vec2 new_pos;
+		new_pos.x=origin.x+(pos.x-origin.x)*cos(rotation)-(pos.y-origin.y)*sin(rotation);
+		new_pos.y=origin.y+(pos.y-origin.y)*cos(rotation)+(pos.x-origin.x)*sin(rotation);
 
-		return position-origin+pos;
+		return position-origin+new_pos;
 	}
 
 	line *body::cut()
@@ -30,10 +30,20 @@ namespace mucl
 		line *l = new line[vertex_count];
 
 		for(int i=0; i<vertex_count-1; i++)
-			l[i]=line(vertexes[i], vertexes[i+1]);
-		l[vertex_count-1]=line(vertexes[vertex_count-1],vertexes[0]);
+			l[i]=line(getVertexPos(i), getVertexPos(i+1));
+		l[vertex_count-1]=line(getVertexPos(vertex_count-1),getVertexPos(0));
 
 		return l;
+	}
+
+	bool body::intersects(body *b)
+	{
+		line *l = b->cut();
+
+		for(int i=0; i<vertex_count; i++)
+			for(int j=0; j<b->vertex_count; j++)
+				if(l[j].isPointsOnSameSide(b->origin, vertexes[i])) return true;
+		return false;
 	}
 
 	body::~body() {}

@@ -25,6 +25,10 @@ namespace mucl
 
 		line *cut();
 
+		bool isPointInside();
+
+		bool intersects(body*);
+
 		~body();
 	};
 }

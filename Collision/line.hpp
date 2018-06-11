@@ -35,7 +35,9 @@ namespace mucl
 
 		vec2 intersects(line);
 
-		vec2 normalFrom(vec2); // DO
+		vec2 normalFrom(vec2);
+
+		bool isPointsOnSameSide(vec2,vec2);
 
 		~line();
 	};
