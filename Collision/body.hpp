@@ -1,13 +1,12 @@
 #pragma once
 #include "vec.hpp"
 #include "line.hpp"
-#include "body_def.hpp"
 
 namespace mucl
 {
 	class body
 	{
-	friend body_def;
+	friend class body_def;
 	private:
 		vec2 position;
 		vec2 origin;
@@ -28,4 +27,4 @@ namespace mucl
 
 		~body();
 	};
-};
+}
