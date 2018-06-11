@@ -1,14 +1,15 @@
 #include <iostream>
-#include "body_def.hpp"
+#include "body.hpp"
 
 using namespace mucl;
 
 int main(int argc, char ** argv)
 {
-	line l0(vec2(0,1),vec2(1,0));
-	line l1(vec2(2,1),vec2(-1,0));
-	std::cout<<l0.isIntersects(l1)<<'\n';
-	vec2 v=l0.intersects(l1);
-	std::cout<<v.x<<' '<<v.y<<'\n';
+	mucl::body b;
+	line *l = b.cut();
+	vec2 v0 = l[3].getFirstPoint();
+	vec2 v1 = l[3].getSecondPoint();
+
+	std::cout<<v0.x<<' '<<v0.y<<'\n'<<v1.x<<' '<<v1.y<<'\n';
 	return 0;
 }
