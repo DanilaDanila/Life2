@@ -12,6 +12,8 @@ namespace mucl
 		float B;
 		float C;
 
+		void countABC();
+
 	public:
 		line();
 
